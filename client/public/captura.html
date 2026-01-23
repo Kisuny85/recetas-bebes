@@ -22,7 +22,6 @@
             --light-bg-2: #E8D5C4;
             --text-dark: #3D3D3D;
             --text-light: #666;
-            --text-lighter: #999;
             --success: #4CAF50;
             --border-light: #E8D5C4;
             --bg-light: #F9F7F4;
@@ -102,72 +101,82 @@
 
         .benefit-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 12px;
-            font-size: 15px;
-            color: var(--text-dark);
+            padding: 15px;
+            background: var(--bg-light);
+            border-radius: 10px;
+            transition: transform 0.2s;
         }
 
-        .benefit-check {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            height: 24px;
-            background: var(--secondary);
-            border-radius: 50%;
-            color: white;
-            font-weight: bold;
+        .benefit-item:hover {
+            transform: translateX(5px);
+        }
+
+        .benefit-icon {
+            font-size: 24px;
             flex-shrink: 0;
         }
 
-        .form-section {
-            margin: 30px 0;
-        }
-
-        .form-section h3 {
-            font-size: 16px;
+        .benefit-text {
             color: var(--text-dark);
-            margin-bottom: 15px;
-            font-weight: 600;
+            font-size: 15px;
+            line-height: 1.5;
         }
 
-        .form-group {
-            margin-bottom: 15px;
+        /* Ocultar el formulario por defecto de Mailchimp */
+        #mc_embed_signup {
+            background: transparent !important;
+            width: 100% !important;
+            clear: none !important;
+            font-family: 'Poppins', sans-serif !important;
         }
 
-        .form-group label {
-            display: block;
-            font-size: 13px;
+        #mc_embed_signup h2 {
+            display: none;
+        }
+
+        #mc_embed_signup .indicates-required {
+            text-align: right;
+            font-size: 12px;
             color: var(--text-light);
-            margin-bottom: 6px;
-            font-weight: 500;
+            margin-bottom: 15px;
         }
 
-        .form-group input {
+        #mc_embed_signup .mc-field-group {
+            margin-bottom: 20px;
+        }
+
+        #mc_embed_signup label {
+            display: block;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        #mc_embed_signup input[type="email"],
+        #mc_embed_signup input[type="text"] {
             width: 100%;
-            padding: 12px 15px;
+            padding: 14px 18px;
             border: 2px solid var(--border-light);
             border-radius: 10px;
             font-size: 15px;
             font-family: 'Poppins', sans-serif;
-            transition: all 0.3s ease;
-            color: var(--text-dark);
+            transition: all 0.3s;
+            background: white;
         }
 
-        .form-group input:focus {
+        #mc_embed_signup input[type="email"]:focus,
+        #mc_embed_signup input[type="text"]:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
         }
 
-        .form-group input::placeholder {
-            color: var(--text-lighter);
-        }
-
-        .submit-btn {
+        #mc_embed_signup .button {
             width: 100%;
-            padding: 14px;
+            padding: 16px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
             border: none;
@@ -175,279 +184,172 @@
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             font-family: 'Poppins', sans-serif;
             margin-top: 10px;
         }
 
-        .submit-btn:hover {
+        #mc_embed_signup .button:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(212, 165, 116, 0.3);
         }
 
-        .submit-btn:active {
+        #mc_embed_signup .button:active {
             transform: translateY(0);
         }
 
-        .submit-btn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
+        #mc_embed_signup .asterisk {
+            color: #e74c3c;
         }
 
-        .success-message {
-            display: none;
-            text-align: center;
-            padding: 40px 30px;
-            background: linear-gradient(135deg, var(--success) 0%, #45a049 100%);
-            color: white;
-            animation: fadeIn 0.5s ease-out;
+        #mc_embed_signup div[aria-hidden="true"] {
+            position: absolute;
+            left: -5000px;
         }
 
-        .success-message.show {
-            display: block;
+        #mce-responses {
+            margin-top: 15px;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .success-message h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .success-message p {
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .success-icon {
-            font-size: 50px;
-            margin-bottom: 15px;
-        }
-
-        .footer-text {
-            font-size: 12px;
-            color: var(--text-lighter);
-            text-align: center;
-            margin-top: 20px;
-            line-height: 1.5;
-        }
-
-        .footer-text a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .footer-text a:hover {
-            text-decoration: underline;
-        }
-
-        .error-message {
-            background: #fee;
-            color: #c33;
+        #mce-error-response,
+        #mce-success-response {
             padding: 12px;
             border-radius: 8px;
             font-size: 14px;
-            margin-bottom: 15px;
-            display: none;
+            margin-top: 10px;
         }
 
-        .error-message.show {
-            display: block;
+        #mce-error-response {
+            background-color: #fee;
+            color: #c33;
+            border: 1px solid #fcc;
         }
 
-        @media (max-width: 480px) {
-            .header {
-                padding: 30px 20px;
-            }
+        #mce-success-response {
+            background-color: #efe;
+            color: #3c3;
+            border: 1px solid #cfc;
+        }
 
+        .trust-badge {
+            margin-top: 25px;
+            padding: 20px;
+            background: var(--bg-light);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .trust-badge p {
+            color: var(--text-light);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .trust-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 640px) {
             .header h1 {
                 font-size: 24px;
+            }
+
+            .header p {
+                font-size: 14px;
             }
 
             .content {
                 padding: 30px 20px;
             }
 
-            .header-icon {
-                font-size: 40px;
+            .benefit-text {
+                font-size: 14px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Formulario de Captura -->
-        <div id="formContainer">
-            <div class="header">
-                <span class="header-icon">🍽️</span>
-                <h1>5 Desayunos Saludables para Bebés</h1>
-                <p>Recetas fáciles, nutritivas y seguras para que tu bebé coma bien desde los 6 meses</p>
-            </div>
-
-            <div class="content">
-                <div class="benefits-list">
-                    <div class="benefit-item">
-                        <div class="benefit-check">✓</div>
-                        <span><strong>Recetas probadas</strong> por nutricionistas</span>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="benefit-check">✓</div>
-                        <span><strong>Ingredientes simples</strong> que encuentras en cualquier mercado</span>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="benefit-check">✓</div>
-                        <span><strong>Preparación rápida</strong> en menos de 15 minutos</span>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="benefit-check">✓</div>
-                        <span><strong>Seguras</strong> sin alérgenos comunes</span>
-                    </div>
-                </div>
-
-                <div class="error-message" id="errorMessage"></div>
-
-                <form id="captureForm">
-                    <div class="form-section">
-                        <h3>Completa tu información para descargar</h3>
-                        
-                        <div class="form-group">
-                            <label for="nombre">Tu Nombre *</label>
-                            <input 
-                                type="text" 
-                                id="nombre" 
-                                name="nombre" 
-                                placeholder="Ej: María" 
-                                required
-                            >
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Tu Email *</label>
-                            <input 
-                                type="email" 
-                                id="email" 
-                                name="email" 
-                                placeholder="Ej: maria@example.com" 
-                                required
-                            >
-                        </div>
-
-                        <button type="submit" class="submit-btn">Descargar PDF Gratis</button>
-                    </div>
-                </form>
-
-                <div class="footer-text">
-                    ✓ Tu email está 100% seguro. No compartimos información.<br>
-                    ✓ Recibirás el PDF + consejos exclusivos por email.
-                </div>
-            </div>
+        <div class="header">
+            <span class="header-icon">🍼</span>
+            <h1>Descarga GRATIS: 5 Desayunos Saludables para tu Bebé</h1>
+            <p>Recetas fáciles, nutritivas y aprobadas por nutricionistas</p>
         </div>
 
-        <!-- Mensaje de Éxito -->
-        <div id="successMessage" class="success-message">
-            <div class="success-icon">✅</div>
-            <h2>¡Perfecto!</h2>
-            <p>Tu guía de 5 desayunos saludables está en camino a tu email.</p>
-            <p>Revisa tu bandeja de entrada (y la carpeta de spam) en los próximos 2 minutos.</p>
-            <p style="font-size: 14px; margin-top: 20px; opacity: 0.9;">
-                Además, recibirás consejos exclusivos y recetas bonus por email.
-            </p>
+        <div class="content">
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <span class="benefit-icon">✅</span>
+                    <span class="benefit-text"><strong>Recetas probadas</strong> por miles de mamás</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">⏱️</span>
+                    <span class="benefit-text"><strong>Listas en 10 minutos</strong> o menos</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">🥗</span>
+                    <span class="benefit-text"><strong>100% naturales</strong> sin azúcares añadidos</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">👶</span>
+                    <span class="benefit-text"><strong>Perfectas</strong> para bebés de 6 a 12 meses</span>
+                </div>
+            </div>
+
+            <!-- Formulario de Mailchimp -->
+            <div id="mc_embed_shell">
+                <div id="mc_embed_signup">
+                    <form action="https://gmail.us9.list-manage.com/subscribe/post?u=350528964c47715a0cad5d0cd&amp;id=33a83c6963&amp;f_id=0046d1e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self">
+                        <div id="mc_embed_signup_scroll">
+                            <div class="indicates-required"><span class="asterisk">*</span> indica que es obligatorio</div>
+                            
+                            <div class="mc-field-group">
+                                <label for="mce-FNAME">Nombre</label>
+                                <input type="text" name="FNAME" class="text" id="mce-FNAME" value="" placeholder="Tu nombre">
+                            </div>
+                            
+                            <div class="mc-field-group">
+                                <label for="mce-EMAIL">Email <span class="asterisk">*</span></label>
+                                <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value="" placeholder="tu@email.com">
+                            </div>
+                            
+                            <div id="mce-responses" class="clear">
+                                <div class="response" id="mce-error-response" style="display: none;"></div>
+                                <div class="response" id="mce-success-response" style="display: none;"></div>
+                            </div>
+                            
+                            <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                                <input type="text" name="b_350528964c47715a0cad5d0cd_33a83c6963" tabindex="-1" value="">
+                            </div>
+                            
+                            <div class="clear">
+                                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Descargar PDF Gratis 🎁">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="trust-badge">
+                <div class="trust-icon">🔒</div>
+                <p><strong>Tu privacidad es importante.</strong><br>
+                No compartimos tu información. Puedes cancelar tu suscripción en cualquier momento.</p>
+            </div>
         </div>
     </div>
 
-    <script>
-        // Configuración de Mailchimp
-        const API_KEY = '33a83c6963-us9';
-        const SERVER = 'us9';
-        const LIST_ID = '8df768cb2a1bbdc3740be6d6ecace979';
-
-        document.getElementById('captureForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const nombre = document.getElementById('nombre').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const errorDiv = document.getElementById('errorMessage');
-            const btn = document.querySelector('.submit-btn');
-
-            // Limpiar mensaje de error
-            errorDiv.classList.remove('show');
-            errorDiv.textContent = '';
-
-            // Validar campos
-            if (!nombre || !email) {
-                errorDiv.textContent = 'Por favor completa todos los campos';
-                errorDiv.classList.add('show');
-                return;
-            }
-
-            // Validar email
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                errorDiv.textContent = 'Por favor ingresa un email válido';
-                errorDiv.classList.add('show');
-                return;
-            }
-
-            // Mostrar que está procesando
-            btn.disabled = true;
-            btn.textContent = 'Procesando...';
-
-            try {
-                // Enviar a Mailchimp
-                const response = await fetch(
-                    `https://${SERVER}.api.mailchimp.com/3.0/lists/${LIST_ID}/members`,
-                    {
-                        method: 'POST',
-                        headers: {
-                            'Authorization': 'Bearer ' + API_KEY,
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            email_address: email,
-                            status: 'subscribed',
-                            merge_fields: {
-                                FNAME: nombre
-                            }
-                        })
-                    }
-                );
-
-                if (response.ok) {
-                    // Éxito - mostrar mensaje
-                    document.getElementById('formContainer').style.display = 'none';
-                    document.getElementById('successMessage').classList.add('show');
-                } else {
-                    const error = await response.json();
-                    
-                    if (error.title === 'Member Exists') {
-                        errorDiv.textContent = 'Este email ya está registrado. Revisa tu bandeja de entrada.';
-                    } else if (error.detail) {
-                        errorDiv.textContent = error.detail;
-                    } else {
-                        errorDiv.textContent = 'Hubo un error. Intenta de nuevo en unos momentos.';
-                    }
-                    
-                    errorDiv.classList.add('show');
-                    btn.disabled = false;
-                    btn.textContent = 'Descargar PDF Gratis';
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                errorDiv.textContent = 'Error de conexión. Verifica tu internet e intenta de nuevo.';
-                errorDiv.classList.add('show');
-                btn.disabled = false;
-                btn.textContent = 'Descargar PDF Gratis';
-            }
-        });
+    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+    <script type="text/javascript">
+        (function($) {
+            window.fnames = new Array(); 
+            window.ftypes = new Array();
+            fnames[0]='EMAIL';
+            ftypes[0]='email';
+            fnames[1]='FNAME';
+            ftypes[1]='text';
+        }(jQuery));
+        var $mcj = jQuery.noConflict(true);
     </script>
 </body>
 </html>
-
