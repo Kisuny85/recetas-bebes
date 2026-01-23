@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Desayunos Saludables para Bebés - Guía Gratis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #D4A574;
+            --primary-dark: #C89560;
+            --secondary: #9CAF88;
+            --light-bg: #F5EFE7;
+            --light-bg-2: #E8D5C4;
+            --text-dark: #3D3D3D;
+            --text-light: #666;
+            --text-lighter: #999;
+            --success: #4CAF50;
+            --border-light: #E8D5C4;
+            --bg-light: #F9F7F4;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--light-bg) 0%, var(--bg-light) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 40px 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .header-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .benefits-list {
+            margin: 30px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            color: var(--text-dark);
+        }
+
+        .benefit-check {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: var(--secondary);
+            border-radius: 50%;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .form-section {
+            margin: 30px 0;
+        }
+
+        .form-section h3 {
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border-light);
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-lighter);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 165, 116, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, var(--success) 0%, #45a049 100%);
+            color: white;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .success-message h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .success-message p {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .success-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .footer-text {
+            font-size: 12px;
+            color: var(--text-lighter);
+            text-align: center;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+
+        .footer-text a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .footer-text a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .header-icon {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Formulario de Captura -->
+        <div id="formContainer">
+            <div class="header">
+                <span class="header-icon">🍽️</span>
+                <h1>5 Desayunos Saludables para Bebés</h1>
+                <p>Recetas fáciles, nutritivas y seguras para que tu bebé coma bien desde los 6 meses</p>
+            </div>
+
+            <div class="content">
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <div class="benefit-check">✓</div>
+                        <span><strong>Recetas probadas</strong> por nutricionistas</span>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-check">✓</div>
+                        <span><strong>Ingredientes simples</strong> que encuentras en cualquier mercado</span>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-check">✓</div>
+                        <span><strong>Preparación rápida</strong> en menos de 15 minutos</span>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-check">✓</div>
+                        <span><strong>Seguras</strong> sin alérgenos comunes</span>
+                    </div>
+                </div>
+
+                <div class="error-message" id="errorMessage"></div>
+
+                <form id="captureForm">
+                    <div class="form-section">
+                        <h3>Completa tu información para descargar</h3>
+                        
+                        <div class="form-group">
+                            <label for="nombre">Tu Nombre *</label>
+                            <input 
+                                type="text" 
+                                id="nombre" 
+                                name="nombre" 
+                                placeholder="Ej: María" 
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Tu Email *</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="Ej: maria@example.com" 
+                                required
+                            >
+                        </div>
+
+                        <button type="submit" class="submit-btn">Descargar PDF Gratis</button>
+                    </div>
+                </form>
+
+                <div class="footer-text">
+                    ✓ Tu email está 100% seguro. No compartimos información.<br>
+                    ✓ Recibirás el PDF + consejos exclusivos por email.
+                </div>
+            </div>
+        </div>
+
+        <!-- Mensaje de Éxito -->
+        <div id="successMessage" class="success-message">
+            <div class="success-icon">✅</div>
+            <h2>¡Perfecto!</h2>
+            <p>Tu guía de 5 desayunos saludables está en camino a tu email.</p>
+            <p>Revisa tu bandeja de entrada (y la carpeta de spam) en los próximos 2 minutos.</p>
+            <p style="font-size: 14px; margin-top: 20px; opacity: 0.9;">
+                Además, recibirás consejos exclusivos y recetas bonus por email.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Configuración de Mailchimp
+        const API_KEY = '33a83c6963-us9';
+        const SERVER = 'us9';
+        const LIST_ID = '8df768cb2a1bbdc3740be6d6ecace979';
+
+        document.getElementById('captureForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const errorDiv = document.getElementById('errorMessage');
+            const btn = document.querySelector('.submit-btn');
+
+            // Limpiar mensaje de error
+            errorDiv.classList.remove('show');
+            errorDiv.textContent = '';
+
+            // Validar campos
+            if (!nombre || !email) {
+                errorDiv.textContent = 'Por favor completa todos los campos';
+                errorDiv.classList.add('show');
+                return;
+            }
+
+            // Validar email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                errorDiv.textContent = 'Por favor ingresa un email válido';
+                errorDiv.classList.add('show');
+                return;
+            }
+
+            // Mostrar que está procesando
+            btn.disabled = true;
+            btn.textContent = 'Procesando...';
+
+            try {
+                // Enviar a Mailchimp
+                const response = await fetch(
+                    `https://${SERVER}.api.mailchimp.com/3.0/lists/${LIST_ID}/members`,
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': 'Bearer ' + API_KEY,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            email_address: email,
+                            status: 'subscribed',
+                            merge_fields: {
+                                FNAME: nombre
+                            }
+                        })
+                    }
+                );
+
+                if (response.ok) {
+                    // Éxito - mostrar mensaje
+                    document.getElementById('formContainer').style.display = 'none';
+                    document.getElementById('successMessage').classList.add('show');
+                } else {
+                    const error = await response.json();
+                    
+                    if (error.title === 'Member Exists') {
+                        errorDiv.textContent = 'Este email ya está registrado. Revisa tu bandeja de entrada.';
+                    } else if (error.detail) {
+                        errorDiv.textContent = error.detail;
+                    } else {
+                        errorDiv.textContent = 'Hubo un error. Intenta de nuevo en unos momentos.';
+                    }
+                    
+                    errorDiv.classList.add('show');
+                    btn.disabled = false;
+                    btn.textContent = 'Descargar PDF Gratis';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                errorDiv.textContent = 'Error de conexión. Verifica tu internet e intenta de nuevo.';
+                errorDiv.classList.add('show');
+                btn.disabled = false;
+                btn.textContent = 'Descargar PDF Gratis';
+            }
+        });
+    </script>
+</body>
+</html>
+
