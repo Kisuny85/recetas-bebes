@@ -1,6 +1,9 @@
 import { Card } from "@/components/ui/card";
 import { CheckCircle2, Gift, Zap, Users, Shield, BookOpen, Play } from "lucide-react";
 import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 /**
  * DESIGN PHILOSOPHY: Warm & Organic
@@ -12,14 +15,45 @@ import { useState } from "react";
 
 export default function Home() {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 3000);
+    if (!email || !name) {
+      toast.error("Por favor completa todos los campos");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, name }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitted(true);
+        toast.success("¡Gracias! Revisa tu correo para descargar el PDF.");
+        setEmail("");
+        setName("");
+        setTimeout(() => setSubmitted(false), 5000);
+      } else {
+        toast.error(data.error || "Hubo un error. Intenta de nuevo.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Hubo un error. Intenta de nuevo.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -312,6 +346,96 @@ export default function Home() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lead Capture Section */}
+      <section className="py-20 md:py-32 bg-gradient-to-br from-[#FFE5EF] to-[#FFF5F8] relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-20 blur-3xl" style={{ backgroundColor: "#FF6B9D" }}></div>
+        
+        <div className="container relative z-10">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-block bg-white px-6 py-2 rounded-full mb-6 shadow-sm">
+                <span className="text-[#FF6B9D] font-bold text-sm">🎁 REGALO GRATIS</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: "#3D3D3D" }}>
+                Descarga GRATIS: 5 Desayunos Nutritivos para tu Bebé
+              </h2>
+              <p className="text-lg md:text-xl mb-8" style={{ color: "#5D5D5D" }}>
+                Recibe en tu correo una guía completa con 5 recetas de desayunos fáciles, rápidos y nutritivos. ¡Perfectas para empezar el día con energía!
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12">
+              {!submitted ? (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium mb-2" style={{ color: "#3D3D3D" }}>
+                      Tu Nombre *
+                    </label>
+                    <Input
+                      id="name"
+                      type="text"
+                      placeholder="Ej: María"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
+                      className="w-full text-lg p-6 border-2 rounded-xl focus:border-[#FF6B9D] transition-colors"
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium mb-2" style={{ color: "#3D3D3D" }}>
+                      Tu Correo Electrónico *
+                    </label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="tu@email.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      className="w-full text-lg p-6 border-2 rounded-xl focus:border-[#FF6B9D] transition-colors"
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full text-lg py-7 rounded-xl font-bold transition-all transform hover:scale-105 shadow-lg"
+                    style={{ backgroundColor: "#FF6B9D", color: "white" }}
+                  >
+                    {isSubmitting ? "Enviando..." : "🎁 Descargar Mi Regalo GRATIS"}
+                  </Button>
+                  <p className="text-center text-sm" style={{ color: "#999" }}>
+                    ✓ Sin spam | ✓ Descarga inmediata | ✓ 100% Gratis
+                  </p>
+                </form>
+              ) : (
+                <div className="text-center py-12">
+                  <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <CheckCircle2 className="w-12 h-12 text-green-600" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4" style={{ color: "#3D3D3D" }}>
+                    ¡Listo! Revisa tu correo
+                  </h3>
+                  <p className="text-lg" style={{ color: "#5D5D5D" }}>
+                    Te hemos enviado el PDF con las 5 recetas de desayunos. Si no lo ves, revisa tu carpeta de spam.
+                  </p>
+                </div>
+              )}
+            </div>
+
+            <div className="mt-12 text-center">
+              <p className="text-lg mb-6" style={{ color: "#5D5D5D" }}>
+                <strong>¿Te gustaron las 5 recetas?</strong> Imagina tener acceso a 500 recetas más...
+              </p>
+              <a href="https://go.hotmart.com/V103308169C?ap=e3a9" target="_blank" rel="noopener noreferrer" className="btn-warm inline-block">
+                Ver la Colección Completa
+              </a>
+            </div>
           </div>
         </div>
       </section>
