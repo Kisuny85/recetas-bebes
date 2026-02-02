@@ -236,11 +236,12 @@ export default function Home() {
                 <div className="text-center">
                   <a 
                     href="/5-desayunos-gratis.pdf"
-                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-block bg-gradient-to-r from-[#FF6B9D] to-[#FF8FAB] text-white text-xl md:text-2xl font-bold px-12 py-6 rounded-2xl shadow-2xl transform hover:scale-110 hover:shadow-3xl transition-all duration-300 animate-pulse no-underline"
                     style={{ textDecoration: 'none' }}
                   >
-                    📥 DESCARGAR PDF GRATIS AHORA
+                    📥 VER Y DESCARGAR PDF GRATIS
                   </a>
                   <p className="mt-6 text-sm" style={{ color: "#999" }}>
                     ✓ Descarga instantánea | ✓ Sin registro | ✓ 100% Gratis
