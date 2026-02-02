@@ -322,7 +322,9 @@ export default function Home() {
                   "Tiempo de preparación: 5-15 minutos",
                 ].map((item, index) => (
                   <li key={index} className="flex gap-3 items-start">
-                    <CheckCircle2 className="w-6 h-6 flex-shrink-0 mt-1" style={{ color: "#9CAF88" }} />
+                    <div className="w-6 h-6 flex-shrink-0 mt-1 rounded-full bg-[#9CAF88] flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">✓</span>
+                    </div>
                     <span style={{ color: "#3D3D3D" }} className="text-lg">
                       {item}
                     </span>
