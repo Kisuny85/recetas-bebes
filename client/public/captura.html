@@ -8,8 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-
-    
     <style>
         * {
             margin: 0;
@@ -49,33 +47,15 @@
             width: 100%;
             background: white;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             overflow: hidden;
-            animation: slideInUp 0.6s ease-out;
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
             padding: 40px 30px;
             text-align: center;
-            color: white;
-        }
-
-        .header-icon {
-            font-size: 50px;
-            margin-bottom: 15px;
-            display: block;
         }
 
         .header h1 {
@@ -88,7 +68,7 @@
         .header p {
             font-size: 16px;
             opacity: 0.95;
-            line-height: 1.5;
+            font-weight: 400;
         }
 
         .content {
@@ -96,28 +76,22 @@
         }
 
         .benefits-list {
-            margin: 30px 0;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            margin-bottom: 30px;
         }
 
         .benefit-item {
             display: flex;
-            align-items: flex-start;
-            gap: 12px;
+            align-items: center;
             padding: 15px;
+            margin-bottom: 12px;
             background: var(--bg-light);
-            border-radius: 10px;
-            transition: transform 0.2s;
-        }
-
-        .benefit-item:hover {
-            transform: translateX(5px);
+            border-radius: 12px;
+            border-left: 4px solid var(--secondary);
         }
 
         .benefit-icon {
             font-size: 24px;
+            margin-right: 15px;
             flex-shrink: 0;
         }
 
@@ -127,16 +101,86 @@
             line-height: 1.5;
         }
 
+        .benefit-text strong {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
         .form-container {
-            margin: 30px 0;
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--border-light);
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(212, 165, 116, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
         }
 
         .trust-badge {
-            margin-top: 25px;
+            text-align: center;
             padding: 20px;
             background: var(--bg-light);
             border-radius: 10px;
-            text-align: center;
+        }
+
+        .trust-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
         }
 
         .trust-badge p {
@@ -145,12 +189,35 @@
             line-height: 1.6;
         }
 
-        .trust-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
+        .trust-badge strong {
+            color: var(--text-dark);
+            font-weight: 600;
         }
 
-        @media (max-width: 640px) {
+        .message {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
             .header h1 {
                 font-size: 24px;
             }
@@ -163,8 +230,8 @@
                 padding: 30px 20px;
             }
 
-            .benefit-text {
-                font-size: 14px;
+            .form-container {
+                padding: 20px;
             }
         }
     </style>
@@ -172,7 +239,6 @@
 <body>
     <div class="container">
         <div class="header">
-            <span class="header-icon">🍼</span>
             <h1>Descarga GRATIS: 5 Desayunos Saludables para tu Bebé</h1>
             <p>Recetas fáciles, nutritivas y aprobadas por nutricionistas</p>
         </div>
@@ -188,7 +254,7 @@
                     <span class="benefit-text"><strong>Listas en 10 minutos</strong> o menos</span>
                 </div>
                 <div class="benefit-item">
-                    <span class="benefit-icon">🥗</span>
+                    <span class="benefit-icon">🥑</span>
                     <span class="benefit-text"><strong>100% naturales</strong> sin azúcares añadidos</span>
                 </div>
                 <div class="benefit-item">
@@ -197,12 +263,24 @@
                 </div>
             </div>
 
-            <!-- Formulario de Sender.net -->
+            <div id="messageContainer"></div>
+
             <div class="form-container">
-                <iframe src="https://stats.sender.net/forms/azpzKY/view" 
-                        style="width: 100%; min-height: 400px; border: none; border-radius: 10px;"
-                        frameborder="0">
-                </iframe>
+                <form id="captureForm">
+                    <div class="form-group">
+                        <label for="email">Ingresa tu correo electrónico:</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="tu@email.com" 
+                            required
+                        >
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        Descargar Ahora GRATIS
+                    </button>
+                </form>
             </div>
 
             <div class="trust-badge">
@@ -212,5 +290,72 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const form = document.getElementById('captureForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const messageContainer = document.getElementById('messageContainer');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            
+            // Deshabilitar botón y cambiar texto
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+            
+            // Limpiar mensajes anteriores
+            messageContainer.innerHTML = '';
+
+            try {
+                const response = await fetch('https://api.sender.net/v2/subscribers', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmYyNjdiNDE3ZWQ3NTZmMzBjNDAxMDUyYTA3YWU2YmFjYTJhMGVkN2RiODAyNDhhZjE1MDJiMTg4ZDY1NjM1ZmZkYzJiMjNiMjEyNjAxNjciLCJpYXQiOjE3NzAwNTIwNDIuMzY5MjEsIm5iZiI6MTc3MDA1MjA0Mi4zNjkyMTMsImV4cCI6NDkyMzY1MjA0Mi4zNjYzMywic3ViIjoiMTA0ODIxMCIsInNjb3BlcyI6W119.KXGUxdCrWkKeKCpPVAXV8SaSDeyJT_BmG0rWh6Q7YkHeRrN0TOzge5qZ_dJZQgvDtY5POwPc14xwRR7awy0AjiLCIlNuiH2bd-EpkGw-rERiY64rGu8axq6WCtraNOLgmoDLrSXdwqXyfHdzLzlijjhu9eW2CxT3Exnt2FK-ql6iKagv-F33hittshX6zJZ6KfOs3i5uOS_ipab9WPShXleBXNZkEgtNlpCZJXTGoQQm554-fzyH75B0-WEMAyya_dl7k9LD18Gh31-Bj6akMe4tFOaDU7KSch0JueG1II5TgbwsCPHyOlLbu_x-LnzIQ-Y2nxo0ZRulgAwQCKDP67oJ0HtH-Mt8FrSKjlLqItuKCnSZlkVps3lASoslVdSBJuv1Q6EIDVtn8G9-BF_M5KyyyO4AFQGZenno7jcaAqk0E7PEABXwEPhVnuxn5AdsBiwudDT6s2tY2SO8IzAbgMZ0KhibGj8B7VFqrrND7GwRcoK2UenHdDH6yYKAV4AYTO_YuFNrc2B2hInQP6wNmJpBxqfBzcdTwya598tJlWcujS_YSuhj28sJARNDTnt62D-6sMe7dJEFCQggHM-BAW29XiFMMZPri4ZCmRetgXOCkWZiCCxe-Y6xBkG5suQXP6tQudGHsya1ZhfaovfB0Q06q3RN6XRRaa8jv8oZ0IA',
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        trigger_automation: true
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Mostrar mensaje de éxito
+                    messageContainer.innerHTML = `
+                        <div class="message success">
+                            ¡Perfecto! 🎉 Revisa tu correo electrónico. Te hemos enviado el PDF con las 5 recetas.
+                        </div>
+                    `;
+                    
+                    // Limpiar formulario
+                    form.reset();
+                    
+                    // Redirigir a la landing page después de 3 segundos
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 3000);
+                } else {
+                    throw new Error(data.message || 'Error al procesar la solicitud');
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                messageContainer.innerHTML = `
+                    <div class="message error">
+                        Hubo un error. Por favor, intenta de nuevo o contáctanos directamente.
+                    </div>
+                `;
+            } finally {
+                // Rehabilitar botón
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Descargar Ahora GRATIS';
+            }
+        });
+    </script>
 </body>
 </html>
