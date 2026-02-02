@@ -13,6 +13,25 @@ import { useState } from "react";
 export default function Home() {
   const [showVideo, setShowVideo] = useState(false);
 
+  const handlePDFDownload = () => {
+    // Create a temporary link element
+    const link = document.createElement('a');
+    link.href = '/5-desayunos-gratis.pdf';
+    link.download = '5-Desayunos-Nutritivos-Mama-Chef-Bebe.pdf';
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    
+    // Append to body, click, and remove
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Also try to open in new window as fallback for TikTok
+    setTimeout(() => {
+      window.open('/5-desayunos-gratis.pdf', '_blank');
+    }, 100);
+  };
+
   const benefits = [
     {
       icon: BookOpen,
@@ -234,14 +253,12 @@ export default function Home() {
 
                 {/* Download button */}
                 <div className="text-center">
-                  <a 
-                    href="/5-desayunos-gratis.pdf" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block bg-gradient-to-r from-[#FF6B9D] to-[#FF8FAB] text-white text-xl md:text-2xl font-bold px-12 py-6 rounded-2xl shadow-2xl transform hover:scale-110 hover:shadow-3xl transition-all duration-300 animate-pulse"
+                  <button 
+                    onClick={handlePDFDownload}
+                    className="inline-block bg-gradient-to-r from-[#FF6B9D] to-[#FF8FAB] text-white text-xl md:text-2xl font-bold px-12 py-6 rounded-2xl shadow-2xl transform hover:scale-110 hover:shadow-3xl transition-all duration-300 animate-pulse cursor-pointer"
                   >
                     📥 DESCARGAR PDF GRATIS AHORA
-                  </a>
+                  </button>
                   <p className="mt-6 text-sm" style={{ color: "#999" }}>
                     ✓ Descarga instantánea | ✓ Sin registro | ✓ 100% Gratis
                   </p>
