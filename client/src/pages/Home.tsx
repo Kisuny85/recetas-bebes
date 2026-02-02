@@ -236,7 +236,8 @@ export default function Home() {
                 <div className="text-center">
                   <a 
                     href="/5-desayunos-gratis.pdf" 
-                    download="5-Desayunos-Nutritivos-Mama-Chef-Bebe.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-block bg-gradient-to-r from-[#FF6B9D] to-[#FF8FAB] text-white text-xl md:text-2xl font-bold px-12 py-6 rounded-2xl shadow-2xl transform hover:scale-110 hover:shadow-3xl transition-all duration-300 animate-pulse"
                   >
                     📥 DESCARGAR PDF GRATIS AHORA
