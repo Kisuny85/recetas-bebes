@@ -109,7 +109,7 @@ export default function Home() {
                 500 recetas nutritivas, fáciles y seguras para que tu bebé coma bien desde los 6 meses.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <a href="https://go.hotmart.com/V103308169C?ap=e3a9" target="_blank" rel="noopener noreferrer" className="btn-warm text-center">
+                <a href="https://go.hotmart.com/V103308169C?ap=401e" target="_blank" rel="noopener noreferrer" className="btn-warm text-center">
                   Obtener Acceso Ahora
                 </a>
                 <button onClick={() => setShowVideo(true)} className="btn-warm-outline">
@@ -422,7 +422,7 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col gap-4 mb-8 justify-center">
-              <a href="https://go.hotmart.com/V103308169C?ap=e3a9" target="_blank" rel="noopener noreferrer" className="btn-warm text-center">
+              <a href="https://go.hotmart.com/V103308169C?ap=401e" target="_blank" rel="noopener noreferrer" className="btn-warm text-center">
                 Obtener Acceso Ahora
               </a>
             </div>
